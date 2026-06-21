@@ -5,7 +5,7 @@ const PORT = 3000;
 
 
 app.get("/", (req, res) => {
-    res.send("Hello from the backend");
+    res.send("Hello from the backend!");
 });
 
 app.listen(PORT, () => {
