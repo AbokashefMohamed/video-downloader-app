@@ -1,6 +1,6 @@
 import { User } from "../models/User.js";
 import { validateEmail, validatePassword } from "../utils/validators.js";
-
+import { signToken } from "../utils/jwt.js";
 
 export async function register(req, res) {
     const { email, password, name } = req.body;
@@ -27,4 +27,35 @@ export async function register(req, res) {
         email: user.email,
         name: user.name,
     });
+}
+
+export async function login(req, res) {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email: email.toLowerCase()}).select("+password");
+    if (!user) {
+        return res.status(401).json({ message: "Invalid email or password"});
+    }
+
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
+        return res.status(401).json({ message: "Invalid email or password"});
+    }
+
+    const token = signToken(user._id.toString());
+
+    res.json({
+        token,
+        user: { id: user._id, email: user.email, name: user.name},
+    });
+}
+
+export async function getMe(req, res) {
+    const user = await User.findById(req.userId);
+
+    if(!user) {
+        return res.status(404).json({ message: "User not found"});
+    }
+
+    res.json({id: user._id, email: user.email, name: user.name});
 }
