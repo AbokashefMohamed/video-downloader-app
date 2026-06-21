@@ -1,11 +1,16 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+
 import express from "express";
 import { connectDB } from "./config/db.js";
 
 const app = express();
+app.use(express.json());
+import authRoutes from "./routes/authRoutes.js";
 const PORT = 3000;
+
+app.use("/api/auth", authRoutes);
 
 
 app.get("/", (req, res) => {
