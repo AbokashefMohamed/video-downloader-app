@@ -8,10 +8,11 @@ import { connectDB } from "./config/db.js";
 const app = express();
 app.use(express.json());
 import authRoutes from "./routes/authRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js";
 const PORT = 3000;
 
 app.use("/api/auth", authRoutes);
-
+app.use("/api/admin", adminRoutes);
 
 app.get("/", (req, res) => {
     res.send("Hello from the backend!");
