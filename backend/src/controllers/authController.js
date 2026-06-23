@@ -63,7 +63,7 @@ export async function getMe(req, res) {
     res.json({id: user._id, email: user.email, name: user.name});
 }
 
-/* Update the authenticated user's profile details. 
+/*  Update the authenticated user's profile details. 
     Supports changing the display name and password. */
 export async function updateProfile(req, res) {
     const { name, currentPassword, newPassword } = req.body;

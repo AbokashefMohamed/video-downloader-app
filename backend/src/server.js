@@ -9,10 +9,12 @@ const app = express();
 app.use(express.json());
 import authRoutes from "./routes/authRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
+import historyRoutes from "./routes/historyRoutes.js"
 const PORT = 3000;
 
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/history", historyRoutes);
 
 app.get("/", (req, res) => {
     res.send("Hello from the backend!");
