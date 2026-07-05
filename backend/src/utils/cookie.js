@@ -14,7 +14,7 @@ export function getOrCreateCookieId(req, res) {
     // no cookie yet, generate a random id
     const newId = randomUUID();
 
-    res.cookies(COOKIE_NAME, newId, {
+    res.cookie(COOKIE_NAME, newId, {
         maxAge: COOKIE_MAX_AGE,
         httpOnly: true,
         sameSite: "lax",

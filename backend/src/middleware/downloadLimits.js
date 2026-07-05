@@ -52,7 +52,7 @@ export async function checkGuestSingleVideoLimit(req, res, next) {
     const now = Date.now();
     // check if 24 hours have passed since their last download
     if (guest.lastSingleVideoDownload) {
-        const elapsed = now - guest.lastSingleVideoDownload.getDate();
+        const elapsed = now - guest.lastSingleVideoDownload.getTime();
 
         if(elapsed >= SINGLE_VIDEO_WINDOW_MS) {
              // if window expired reset their count
@@ -63,7 +63,7 @@ export async function checkGuestSingleVideoLimit(req, res, next) {
     }
 
     if(guest.singleVideoCount >= GUEST_SINGLE_VIDEO_LIMIT) {
-        const elapsed = now - guest.lastSingleVideoDownload.getDate();
+        const elapsed = now - guest.lastSingleVideoDownload.getTime();
         const remaining = SINGLE_VIDEO_WINDOW_MS - elapsed;
         const hoursLeft = Math.ceil(remaining / (1000 * 60 * 60));
 
@@ -125,9 +125,15 @@ export async function requirePlaylistCooldown(req, res, next) {
     
     const user = await User.findById(req.userId);
 
+    if (!user) {
+        return res.status(404).json({
+            message: "User not found"
+        });
+    }
+
     if (user.lastPlaylistDownload) {
         const elapsed = Date.now() - user.lastPlaylistDownload.getTime();
-        const remaining = PLAYLIST_COOLDOWN_MS - elapsed;
+        const remaining = Math.max(PLAYLIST_COOLDOWN_MS - elapsed, 0);
 
         if (remaining > 0) {
             const hoursLeft = Math.ceil(remaining / (1000 * 60 * 60));
