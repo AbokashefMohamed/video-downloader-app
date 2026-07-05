@@ -27,6 +27,14 @@ const userSchema = new Schema(
             enum: ["user", 'admin'],
             default: "user",
         },
+        activeDownload: {
+            type: Boolean,
+            default: false,
+        },
+        lastPlaylistDownload: {
+            type: Date,
+            default: null,
+        }
     },
     {timestamps: true}
 );
