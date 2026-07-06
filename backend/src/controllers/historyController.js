@@ -5,7 +5,7 @@ import { History } from "../models/History.js";
 export async function getHistory(req, res) {
   const history = await History.find({ user: req.userId }).sort({
     createdAt: -1,
-  });
+  }).limit(100);
 
   res.json(history);
 }

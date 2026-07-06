@@ -2,7 +2,7 @@ import { User } from "../models/User.js";
 import mongoose from "mongoose";
 // returns every user in the system (admin only)
 export async function listUsers(req, res) {
-  const users = await User.find();
+  const users = await User.find().select("email name role createdAt");
   res.json(users);
 }
 

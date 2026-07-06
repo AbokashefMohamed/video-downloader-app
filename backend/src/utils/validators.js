@@ -32,7 +32,7 @@ export function validatePassword(password) {
         return "Password must contain at least one number";
     }
 
-    if (!/[^a-zA-Z0_9]/.test(password)) {
+    if (!/[^a-zA-Z0-9]/.test(password)) {
         return "Password must contain at least one symbol";
     }
 
