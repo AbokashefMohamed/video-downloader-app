@@ -7,5 +7,10 @@ node_modules/
 # Logs
 *.log
 
+#bin
+bin/
+
 # OS-generated files
 Thumbs.db
+
+tmp_downloads/
