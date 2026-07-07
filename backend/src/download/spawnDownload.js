@@ -18,6 +18,15 @@ function safeRemove(filePath) {
   } catch (_) {}
 }
 
+function cleanFiles(uniqueId) {
+  try {
+    const allFiles = fs.readdirSync(TEMP_DIR);
+    allFiles
+      .filter((f) => f.includes(uniqueId))
+      .forEach((f) => safeRemove(path.join(TEMP_DIR, f)));
+  } catch (_) {}
+}
+
 // find actual output file ytdlp created
 function findOutputFile(dir, uniqueId, type) {
   const files = fs.readdirSync(dir);
@@ -149,19 +158,21 @@ export async function spawnDownload({
 
         readStream.on("error", (err) => {
           // clean up all temp files for this download on error
-          const allFiles = fs.readdirSync(TEMP_DIR);
-          allFiles
-            .filter((f) => f.includes(uniqueId))
-            .forEach((f) => safeRemove(path.join(TEMP_DIR, f)));
-          reject(err);
+          cleanFiles(uniqueId);
+          if (!res.headersSent) {
+            reject(err);
+          } else {
+            console.error(
+              "[download] stream error after headers sent:",
+              err.message,
+            );
+            resolve({ progressPercent });
+          }
         });
 
         readStream.on("close", () => {
           // file fully sent so delete all temp files for this download
-          const allFiles = fs.readdirSync(TEMP_DIR);
-          allFiles
-            .filter((f) => f.includes(uniqueId))
-            .forEach((f) => safeRemove(path.join(TEMP_DIR, f)));
+          cleanFiles(uniqueId);
           resolve({ progressPercent });
         });
         // pipe streams the file chunk by chunk directly to the browser
