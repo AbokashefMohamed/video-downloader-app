@@ -1,0 +1,77 @@
+{
+  "nav": {
+    "home": "Hem",
+    "history": "Historik",
+    "admin": "Admin",
+    "login": "Logga in",
+    "register": "Registrera",
+    "logout": "Logga ut"
+  },
+  "home": {
+    "title": "Videonedladdare",
+    "subtitle": "Ladda ner videor, ljud och undertexter från YouTube och mer",
+    "urlPlaceholder": "Klistra in en video-URL här...",
+    "probeButton": "Hämta videoinformation",
+    "downloadVideo": "Ladda ner video",
+    "downloadAudio": "Ladda ner ljud",
+    "downloadSubtitle": "Ladda ner undertitel",
+    "selectQuality": "Välj kvalitet",
+    "selectAudioFormat": "Välj ljudformat",
+    "selectSubtitle": "Välj undertitelspråk",
+    "isPlaylist": "Detta är en spellista",
+    "guestLimit": "Du har använt alla 3 gratis nedladdningar. Registrera dig eller logga in för att fortsätta.",
+    "loginForMore": "Logga in för obegränsade nedladdningar"
+  },
+  "auth": {
+    "name": "Fullständigt namn",
+    "email": "E-postadress",
+    "password": "Lösenord",
+    "currentPassword": "Nuvarande lösenord",
+    "newPassword": "Nytt lösenord",
+    "loginTitle": "Välkommen tillbaka",
+    "loginSubtitle": "Logga in på ditt konto",
+    "registerTitle": "Skapa konto",
+    "registerSubtitle": "Gå med oss idag",
+    "loginButton": "Logga in",
+    "registerButton": "Registrera",
+    "noAccount": "Har du inget konto?",
+    "haveAccount": "Har du redan ett konto?",
+    "signUp": "Registrera dig",
+    "signIn": "Logga in"
+  },
+  "history": {
+    "title": "Nedladdningshistorik",
+    "empty": "Inga nedladdningar än",
+    "clearAll": "Rensa alla",
+    "delete": "Ta bort",
+    "video": "Video",
+    "audio": "Ljud",
+    "subtitle": "Undertitel"
+  },
+  "profile": {
+    "title": "Min profil",
+    "updateName": "Uppdatera namn",
+    "updatePassword": "Uppdatera lösenord",
+    "deleteAccount": "Ta bort konto",
+    "deleteConfirm": "Ange ditt lösenord för att bekräfta kontoborttagning",
+    "save": "Spara ändringar"
+  },
+  "admin": {
+    "title": "Adminpanel",
+    "users": "Användare",
+    "role": "Roll",
+    "actions": "Åtgärder",
+    "deleteUser": "Ta bort användare",
+    "updateRole": "Uppdatera roll"
+  },
+  "common": {
+    "loading": "Laddar...",
+    "error": "Något gick fel",
+    "retry": "Försök igen",
+    "cancel": "Avbryt",
+    "confirm": "Bekräfta",
+    "back": "Tillbaka",
+    "minutes": "minuter",
+    "hours": "timmar"
+  }
+}

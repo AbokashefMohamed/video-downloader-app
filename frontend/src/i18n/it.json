@@ -1,0 +1,77 @@
+{
+  "nav": {
+    "home": "Home",
+    "history": "Cronologia",
+    "admin": "Admin",
+    "login": "Accedi",
+    "register": "Registrati",
+    "logout": "Esci"
+  },
+  "home": {
+    "title": "Scarica Video",
+    "subtitle": "Scarica video, audio e sottotitoli da YouTube e altro",
+    "urlPlaceholder": "Incolla un URL video qui...",
+    "probeButton": "Ottieni informazioni video",
+    "downloadVideo": "Scarica video",
+    "downloadAudio": "Scarica audio",
+    "downloadSubtitle": "Scarica sottotitoli",
+    "selectQuality": "Seleziona qualità",
+    "selectAudioFormat": "Seleziona formato audio",
+    "selectSubtitle": "Seleziona lingua sottotitoli",
+    "isPlaylist": "Questa è una playlist",
+    "guestLimit": "Hai utilizzato tutti e 3 i download gratuiti. Registrati o accedi per continuare.",
+    "loginForMore": "Accedi per download illimitati"
+  },
+  "auth": {
+    "name": "Nome completo",
+    "email": "Indirizzo email",
+    "password": "Password",
+    "currentPassword": "Password attuale",
+    "newPassword": "Nuova password",
+    "loginTitle": "Bentornato",
+    "loginSubtitle": "Accedi al tuo account",
+    "registerTitle": "Crea account",
+    "registerSubtitle": "Unisciti a noi oggi",
+    "loginButton": "Accedi",
+    "registerButton": "Registrati",
+    "noAccount": "Non hai un account?",
+    "haveAccount": "Hai già un account?",
+    "signUp": "Registrati",
+    "signIn": "Accedi"
+  },
+  "history": {
+    "title": "Cronologia download",
+    "empty": "Nessun download ancora",
+    "clearAll": "Cancella tutto",
+    "delete": "Elimina",
+    "video": "Video",
+    "audio": "Audio",
+    "subtitle": "Sottotitoli"
+  },
+  "profile": {
+    "title": "Il mio profilo",
+    "updateName": "Aggiorna nome",
+    "updatePassword": "Aggiorna password",
+    "deleteAccount": "Elimina account",
+    "deleteConfirm": "Inserisci la password per confermare l'eliminazione dell'account",
+    "save": "Salva modifiche"
+  },
+  "admin": {
+    "title": "Pannello admin",
+    "users": "Utenti",
+    "role": "Ruolo",
+    "actions": "Azioni",
+    "deleteUser": "Elimina utente",
+    "updateRole": "Aggiorna ruolo"
+  },
+  "common": {
+    "loading": "Caricamento...",
+    "error": "Qualcosa è andato storto",
+    "retry": "Riprova",
+    "cancel": "Annulla",
+    "confirm": "Conferma",
+    "back": "Indietro",
+    "minutes": "minuti",
+    "hours": "ore"
+  }
+}

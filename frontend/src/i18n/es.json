@@ -1,0 +1,77 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "history": "Historial",
+    "admin": "Admin",
+    "login": "Iniciar sesión",
+    "register": "Registrarse",
+    "logout": "Cerrar sesión"
+  },
+  "home": {
+    "title": "Descargador de videos",
+    "subtitle": "Descarga videos, audio y subtítulos de YouTube y más",
+    "urlPlaceholder": "Pega una URL de video aquí...",
+    "probeButton": "Obtener información del video",
+    "downloadVideo": "Descargar video",
+    "downloadAudio": "Descargar audio",
+    "downloadSubtitle": "Descargar subtítulos",
+    "selectQuality": "Seleccionar calidad",
+    "selectAudioFormat": "Seleccionar formato de audio",
+    "selectSubtitle": "Seleccionar idioma de subtítulos",
+    "isPlaylist": "Esto es una lista de reproducción",
+    "guestLimit": "Has usado todas las 3 descargas gratuitas. Regístrate o inicia sesión para continuar.",
+    "loginForMore": "Inicia sesión para descargas ilimitadas"
+  },
+  "auth": {
+    "name": "Nombre completo",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "currentPassword": "Contraseña actual",
+    "newPassword": "Nueva contraseña",
+    "loginTitle": "Bienvenido de nuevo",
+    "loginSubtitle": "Inicia sesión en tu cuenta",
+    "registerTitle": "Crear cuenta",
+    "registerSubtitle": "Únete a nosotros hoy",
+    "loginButton": "Iniciar sesión",
+    "registerButton": "Registrarse",
+    "noAccount": "¿No tienes una cuenta?",
+    "haveAccount": "¿Ya tienes una cuenta?",
+    "signUp": "Regístrate",
+    "signIn": "Inicia sesión"
+  },
+  "history": {
+    "title": "Historial de descargas",
+    "empty": "Sin descargas aún",
+    "clearAll": "Borrar todo",
+    "delete": "Eliminar",
+    "video": "Video",
+    "audio": "Audio",
+    "subtitle": "Subtítulos"
+  },
+  "profile": {
+    "title": "Mi perfil",
+    "updateName": "Actualizar nombre",
+    "updatePassword": "Actualizar contraseña",
+    "deleteAccount": "Eliminar cuenta",
+    "deleteConfirm": "Ingresa tu contraseña para confirmar la eliminación de la cuenta",
+    "save": "Guardar cambios"
+  },
+  "admin": {
+    "title": "Panel de administración",
+    "users": "Usuarios",
+    "role": "Rol",
+    "actions": "Acciones",
+    "deleteUser": "Eliminar usuario",
+    "updateRole": "Actualizar rol"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal",
+    "retry": "Intentar de nuevo",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "back": "Atrás",
+    "minutes": "minutos",
+    "hours": "horas"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "history": "السجل",
+    "admin": "الإدارة",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "logout": "تسجيل الخروج"
+  },
+  "home": {
+    "title": "محمل الفيديو",
+    "subtitle": "حمّل مقاطع الفيديو والصوت والترجمة من يوتيوب والمزيد",
+    "urlPlaceholder": "الصق رابط الفيديو هنا...",
+    "probeButton": "الحصول على معلومات الفيديو",
+    "downloadVideo": "تحميل الفيديو",
+    "downloadAudio": "تحميل الصوت",
+    "downloadSubtitle": "تحميل الترجمة",
+    "selectQuality": "اختر الجودة",
+    "selectAudioFormat": "اختر صيغة الصوت",
+    "selectSubtitle": "اختر لغة الترجمة",
+    "isPlaylist": "هذه قائمة تشغيل",
+    "guestLimit": "لقد استخدمت جميع التنزيلات المجانية الثلاثة. يرجى التسجيل أو تسجيل الدخول للمتابعة.",
+    "loginForMore": "سجل الدخول للتنزيل غير المحدود"
+  },
+  "auth": {
+    "name": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "currentPassword": "كلمة المرور الحالية",
+    "newPassword": "كلمة المرور الجديدة",
+    "loginTitle": "أهلاً بعودتك",
+    "loginSubtitle": "سجل الدخول إلى حسابك",
+    "registerTitle": "إنشاء حساب",
+    "registerSubtitle": "انضم إلينا اليوم",
+    "loginButton": "تسجيل الدخول",
+    "registerButton": "إنشاء حساب",
+    "noAccount": "ليس لديك حساب؟",
+    "haveAccount": "لديك حساب بالفعل؟",
+    "signUp": "سجل الآن",
+    "signIn": "سجل الدخول"
+  },
+  "history": {
+    "title": "سجل التنزيلات",
+    "empty": "لا توجد تنزيلات بعد",
+    "clearAll": "مسح الكل",
+    "delete": "حذف",
+    "video": "فيديو",
+    "audio": "صوت",
+    "subtitle": "ترجمة"
+  },
+  "profile": {
+    "title": "ملفي الشخصي",
+    "updateName": "تحديث الاسم",
+    "updatePassword": "تحديث كلمة المرور",
+    "deleteAccount": "حذف الحساب",
+    "deleteConfirm": "أدخل كلمة المرور لتأكيد حذف الحساب",
+    "save": "حفظ التغييرات"
+  },
+  "admin": {
+    "title": "لوحة الإدارة",
+    "users": "المستخدمون",
+    "role": "الدور",
+    "actions": "الإجراءات",
+    "deleteUser": "حذف المستخدم",
+    "updateRole": "تحديث الدور"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ ما",
+    "retry": "حاول مجدداً",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "back": "رجوع",
+    "minutes": "دقائق",
+    "hours": "ساعات"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "history": "Historique",
+    "admin": "Admin",
+    "login": "Connexion",
+    "register": "S'inscrire",
+    "logout": "Déconnexion"
+  },
+  "home": {
+    "title": "Téléchargeur de vidéos",
+    "subtitle": "Téléchargez des vidéos, de l'audio et des sous-titres depuis YouTube et plus",
+    "urlPlaceholder": "Collez une URL vidéo ici...",
+    "probeButton": "Obtenir les informations vidéo",
+    "downloadVideo": "Télécharger la vidéo",
+    "downloadAudio": "Télécharger l'audio",
+    "downloadSubtitle": "Télécharger les sous-titres",
+    "selectQuality": "Sélectionner la qualité",
+    "selectAudioFormat": "Sélectionner le format audio",
+    "selectSubtitle": "Sélectionner la langue des sous-titres",
+    "isPlaylist": "C'est une playlist",
+    "guestLimit": "Vous avez utilisé vos 3 téléchargements gratuits. Inscrivez-vous ou connectez-vous pour continuer.",
+    "loginForMore": "Connectez-vous pour des téléchargements illimités"
+  },
+  "auth": {
+    "name": "Nom complet",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "currentPassword": "Mot de passe actuel",
+    "newPassword": "Nouveau mot de passe",
+    "loginTitle": "Bon retour",
+    "loginSubtitle": "Connectez-vous à votre compte",
+    "registerTitle": "Créer un compte",
+    "registerSubtitle": "Rejoignez-nous aujourd'hui",
+    "loginButton": "Se connecter",
+    "registerButton": "S'inscrire",
+    "noAccount": "Vous n'avez pas de compte ?",
+    "haveAccount": "Vous avez déjà un compte ?",
+    "signUp": "S'inscrire",
+    "signIn": "Se connecter"
+  },
+  "history": {
+    "title": "Historique des téléchargements",
+    "empty": "Aucun téléchargement pour l'instant",
+    "clearAll": "Tout effacer",
+    "delete": "Supprimer",
+    "video": "Vidéo",
+    "audio": "Audio",
+    "subtitle": "Sous-titres"
+  },
+  "profile": {
+    "title": "Mon profil",
+    "updateName": "Mettre à jour le nom",
+    "updatePassword": "Mettre à jour le mot de passe",
+    "deleteAccount": "Supprimer le compte",
+    "deleteConfirm": "Entrez votre mot de passe pour confirmer la suppression du compte",
+    "save": "Enregistrer les modifications"
+  },
+  "admin": {
+    "title": "Panneau d'administration",
+    "users": "Utilisateurs",
+    "role": "Rôle",
+    "actions": "Actions",
+    "deleteUser": "Supprimer l'utilisateur",
+    "updateRole": "Mettre à jour le rôle"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Quelque chose s'est mal passé",
+    "retry": "Réessayer",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "back": "Retour",
+    "minutes": "minutes",
+    "hours": "heures"
+  }
+}

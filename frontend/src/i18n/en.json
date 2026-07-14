@@ -1,0 +1,77 @@
+{
+  "nav": {
+    "home": "Home",
+    "history": "History",
+    "admin": "Admin",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "home": {
+    "title": "Video Downloader",
+    "subtitle": "Download videos, audio and subtitles from YouTube and more",
+    "urlPlaceholder": "Paste a video URL here...",
+    "probeButton": "Get Video Info",
+    "downloadVideo": "Download Video",
+    "downloadAudio": "Download Audio",
+    "downloadSubtitle": "Download Subtitle",
+    "selectQuality": "Select Quality",
+    "selectAudioFormat": "Select Audio Format",
+    "selectSubtitle": "Select Subtitle Language",
+    "isPlaylist": "This is a playlist",
+    "guestLimit": "You have used all 3 free downloads. Please register or login to continue.",
+    "loginForMore": "Login for unlimited downloads"
+  },
+  "auth": {
+    "name": "Full Name",
+    "email": "Email Address",
+    "password": "Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "loginTitle": "Welcome Back",
+    "loginSubtitle": "Login to your account",
+    "registerTitle": "Create Account",
+    "registerSubtitle": "Join us today",
+    "loginButton": "Login",
+    "registerButton": "Register",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "signUp": "Sign up",
+    "signIn": "Sign in"
+  },
+  "history": {
+    "title": "Download History",
+    "empty": "No downloads yet",
+    "clearAll": "Clear All",
+    "delete": "Delete",
+    "video": "Video",
+    "audio": "Audio",
+    "subtitle": "Subtitle"
+  },
+  "profile": {
+    "title": "My Profile",
+    "updateName": "Update Name",
+    "updatePassword": "Update Password",
+    "deleteAccount": "Delete Account",
+    "deleteConfirm": "Enter your password to confirm account deletion",
+    "save": "Save Changes"
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "users": "Users",
+    "role": "Role",
+    "actions": "Actions",
+    "deleteUser": "Delete User",
+    "updateRole": "Update Role"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try Again",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "back": "Back",
+    "minutes": "minutes",
+    "hours": "hours"
+  }
+}
