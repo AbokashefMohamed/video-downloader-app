@@ -67,3 +67,10 @@ export interface DownloadRequest {
   audioFormat?: string;
   subLang?: string;
 }
+
+
+export interface UpdateProfileDto {
+  name?: string;
+  currentPassword?: string;
+  newPassword?: string;
+}
