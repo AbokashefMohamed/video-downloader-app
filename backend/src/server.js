@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import express from "express";
+import cors from "cors";
 import cookieParser from "cookie-parser";
 import { connectDB } from "./config/db.js";
 
@@ -12,16 +13,24 @@ import probeRoutes from "./routes/probeRoutes.js";
 import downloadRoutes from "./routes/downloadRoutes.js";
 
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
+
+// allow requests from the frontend
+app.use(cors({
+  origin: process.env.CLIENT_ORIGIN || "http://localhost:5173",
+  credentials: true,
+}));
 
 app.use(express.json());
 app.use(cookieParser());
 
 
-app.get("/", (req, res) => {
-  res.send("Hello from the backend!");
+// health check endpoint
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok" });
 });
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
