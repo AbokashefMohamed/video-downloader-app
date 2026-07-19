@@ -50,7 +50,9 @@
     "delete": "حذف",
     "video": "فيديو",
     "audio": "صوت",
-    "subtitle": "ترجمة"
+    "subtitle": "ترجمة",
+    "confirmClearAll": "هل أنت متأكد أنك تريد حذف كل السجل؟",
+    "noImage": "لا توجد صورة"
   },
   "profile": {
     "title": "ملفي الشخصي",

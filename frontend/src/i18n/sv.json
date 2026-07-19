@@ -50,7 +50,9 @@
     "delete": "Ta bort",
     "video": "Video",
     "audio": "Ljud",
-    "subtitle": "Undertitel"
+    "subtitle": "Undertitel",
+    "confirmClearAll": "Är du säker på att du vill ta bort all historik?",
+    "noImage": "Ingen bild"
   },
   "profile": {
     "title": "Min profil",

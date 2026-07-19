@@ -50,7 +50,9 @@
     "delete": "Delete",
     "video": "Video",
     "audio": "Audio",
-    "subtitle": "Subtitle"
+    "subtitle": "Subtitle",
+    "confirmClearAll": "Are you sure you want to delete all history?",
+    "noImage": "No image"
   },
   "profile": {
     "title": "My Profile",

@@ -50,7 +50,9 @@
     "delete": "Elimina",
     "video": "Video",
     "audio": "Audio",
-    "subtitle": "Sottotitoli"
+    "subtitle": "Sottotitoli",
+    "confirmClearAll": "Sei sicuro di voler eliminare tutta la cronologia?",
+    "noImage": "Nessuna immagine"
   },
   "profile": {
     "title": "Il mio profilo",
