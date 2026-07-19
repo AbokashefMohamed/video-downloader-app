@@ -20,7 +20,8 @@
     "selectSubtitle": "Välj undertitelspråk",
     "isPlaylist": "Detta är en spellista",
     "guestLimit": "Du har använt alla 3 gratis nedladdningar. Registrera dig eller logga in för att fortsätta.",
-    "loginForMore": "Logga in för obegränsade nedladdningar"
+    "loginForMore": "Logga in för obegränsade nedladdningar",
+    "selectType": "Välj nedladdningstyp"
   },
   "auth": {
     "name": "Fullständigt namn",

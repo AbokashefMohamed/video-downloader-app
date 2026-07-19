@@ -20,7 +20,8 @@
     "selectSubtitle": "Seleziona lingua sottotitoli",
     "isPlaylist": "Questa è una playlist",
     "guestLimit": "Hai utilizzato tutti e 3 i download gratuiti. Registrati o accedi per continuare.",
-    "loginForMore": "Accedi per download illimitati"
+    "loginForMore": "Accedi per download illimitati",
+    "selectType": "Seleziona tipo di download"
   },
   "auth": {
     "name": "Nome completo",

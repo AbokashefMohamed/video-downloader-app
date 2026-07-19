@@ -20,7 +20,8 @@
     "selectSubtitle": "Select Subtitle Language",
     "isPlaylist": "This is a playlist",
     "guestLimit": "You have used all 3 free downloads. Please register or login to continue.",
-    "loginForMore": "Login for unlimited downloads"
+    "loginForMore": "Login for unlimited downloads",
+    "selectType": "Select download type"
   },
   "auth": {
     "name": "Full Name",
