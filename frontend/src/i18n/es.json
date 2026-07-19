@@ -37,7 +37,10 @@
     "noAccount": "¿No tienes una cuenta?",
     "haveAccount": "¿Ya tienes una cuenta?",
     "signUp": "Regístrate",
-    "signIn": "Inicia sesión"
+    "signIn": "Inicia sesión",
+    "nameRequired": "El nombre es obligatorio",
+    "invalidEmail": "Por favor ingresa un correo electrónico válido",
+    "passwordTooShort": "La contraseña debe tener al menos 8 caracteres"
   },
   "history": {
     "title": "Historial de descargas",

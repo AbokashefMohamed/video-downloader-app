@@ -104,7 +104,7 @@ export function Navbar() {
               variant="outline"
               size="sm"
               onClick={handleLogout}
-              className="border-white/30 text-white hover:bg-white/10"
+              className="border-white/30 hover:bg-white/10"
             >
               {t("nav.logout")}
             </Button>
@@ -115,7 +115,7 @@ export function Navbar() {
               <Button
                 variant="outline"
                 size="sm"
-                className="border-white/30 text-white hover:bg-white/10"
+                className="border-white/30  hover:bg-white/10"
               >
                 {t("nav.login")}
               </Button>
@@ -123,7 +123,7 @@ export function Navbar() {
             <Link to="/register">
               <Button
                 size="sm"
-                className="bg-white text-purple-600 hover:bg-white/90"
+                className="bg-white text-purple-600 hover:dbg-white/10"
               >
                 {t("nav.register")}
               </Button>

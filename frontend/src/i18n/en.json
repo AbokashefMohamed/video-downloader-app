@@ -37,7 +37,10 @@
     "noAccount": "Don't have an account?",
     "haveAccount": "Already have an account?",
     "signUp": "Sign up",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "nameRequired": "Name is required",
+    "invalidEmail": "Please enter a valid email address",
+    "passwordTooShort": "Password must be at least 8 characters"
   },
   "history": {
     "title": "Download History",

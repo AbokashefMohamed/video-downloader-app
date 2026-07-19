@@ -37,7 +37,10 @@
     "noAccount": "Non hai un account?",
     "haveAccount": "Hai già un account?",
     "signUp": "Registrati",
-    "signIn": "Accedi"
+    "signIn": "Accedi",
+    "nameRequired": "Il nome è obbligatorio",
+    "invalidEmail": "Inserisci un indirizzo email valido",
+    "passwordTooShort": "La password deve essere di almeno 8 caratteri"
   },
   "history": {
     "title": "Cronologia download",
