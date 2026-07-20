@@ -28,14 +28,14 @@ export function VideoSettings({ formats, formatId, onChange }: Props) {
 
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1 [&_svg]:text-white">
       <label className="text-white/80 text-sm">{t("home.selectQuality")}</label>
       <Select
         value={selectedFormat}
         onValueChange={(v) => onChange(v || null)}
       >
-        <SelectTrigger className="bg-white border-white/20 text-white">
-          <SelectValue className="text-purple-600" placeholder={t("home.selectQuality")} />
+        <SelectTrigger className=" border-white/20 text-white">
+          <SelectValue className="text-white" placeholder={t("home.selectQuality")} />
         </SelectTrigger>
         <SelectContent className="w-auto min-w-full max-w-sm">
           {videoFormats.map((f) => (
