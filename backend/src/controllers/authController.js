@@ -36,9 +36,12 @@ export async function register(req, res) {
   const token = signToken(user._id.toString());
   res.status(201).json({
     token,
+    user: {
     id: user._id,
     email: user.email,
     name: user.name,
+    role: user.role,
+  },
   });
 }
 
@@ -66,7 +69,7 @@ export async function login(req, res) {
 
   res.json({
     token,
-    user: { id: user._id, email: user.email, name: user.name },
+    user: { id: user._id, email: user.email, name: user.name, role: user.role },
   });
 }
 
@@ -78,7 +81,7 @@ export async function getMe(req, res) {
     return res.status(404).json({ message: "User not found" });
   }
 
-  res.json({ id: user._id, email: user.email, name: user.name });
+  res.json({ id: user._id, email: user.email, name: user.name, role: user.role });
 }
 
 /*  Update the authenticated user's profile details. 
@@ -152,3 +155,5 @@ export async function deleteAccount(req, res) {
 
   res.json({ message: "Account deleted successfully" });
 }
+
+
