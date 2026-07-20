@@ -12,7 +12,7 @@ export function UrlInput({ url, probing, onChange, onProbe }: Props) {
   const { t } = useTranslation();
 
   return (
-    <div className="flex gap-2">
+    <div className="flex flex-col sm:flex-row gap-2">
       <input
         type="url"
         required
@@ -26,12 +26,12 @@ export function UrlInput({ url, probing, onChange, onProbe }: Props) {
           }
         }}
         placeholder={t("home.urlPlaceholder")}
-        className="flex-1 bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder:text-white/40 focus:outline-none focus:border-white/50"
+        className="flex-1 bg-white/10 border border-white/20 rounded-lg px-4 py-2 text-white placeholder:text-white/40 focus:outline-none focus:border-white/50 h-10"
       />
       <Button
         onClick={onProbe}
         disabled={probing || !url.trim()}
-        className="bg-white text-purple-600 hover:bg-white/90 shrink-0"
+        className="bg-white text-purple-600 hover:bg-white/90 shrink-0 h-10"
       >
         {probing ? t("common.loading") : t("home.probeButton")}
       </Button>
