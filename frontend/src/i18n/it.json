@@ -41,7 +41,10 @@
     "signIn": "Accedi",
     "nameRequired": "Il nome è obbligatorio",
     "invalidEmail": "Inserisci un indirizzo email valido",
-    "passwordTooShort": "La password deve essere di almeno 8 caratteri"
+    "passwordTooShort": "La password deve essere di almeno 8 caratteri",
+    "passwordNeedsUppercase": "La password deve contenere almeno una lettera maiuscola",
+"passwordNeedsNumber": "La password deve contenere almeno un numero",
+"passwordNeedsSymbol": "La password deve contenere almeno un simbolo"
   },
   "history": {
     "title": "Cronologia download",
@@ -59,7 +62,8 @@
     "updateName": "Aggiorna nome",
     "updatePassword": "Aggiorna password",
     "deleteAccount": "Elimina account",
-    "deleteConfirm": "Inserisci la password per confermare l'eliminazione dell'account",
+    "deleteAccountConfirm": "Inserisci la password per confermare l'eliminazione dell'account",
+    "deleteConfirm": "Sei sicuro di voler eliminare il tuo account? Questa azione non può essere annullata.",
     "save": "Salva modifiche"
   },
   "admin": {

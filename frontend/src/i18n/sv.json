@@ -41,7 +41,10 @@
     "signIn": "Logga in",
     "nameRequired": "Namn krävs",
     "invalidEmail": "Ange en giltig e-postadress",
-    "passwordTooShort": "Lösenordet måste vara minst 8 tecken"
+    "passwordTooShort": "Lösenordet måste vara minst 8 tecken",
+    "passwordNeedsUppercase": "Lösenordet måste innehålla minst en stor bokstav",
+"passwordNeedsNumber": "Lösenordet måste innehålla minst en siffra",
+"passwordNeedsSymbol": "Lösenordet måste innehålla minst ett specialtecken"
   },
   "history": {
     "title": "Nedladdningshistorik",
@@ -59,7 +62,8 @@
     "updateName": "Uppdatera namn",
     "updatePassword": "Uppdatera lösenord",
     "deleteAccount": "Ta bort konto",
-    "deleteConfirm": "Ange ditt lösenord för att bekräfta kontoborttagning",
+    "deleteAccountConfirm": "Ange ditt lösenord för att bekräfta kontoborttagning",
+    "deleteConfirm": "Är du säker på att du vill ta bort ditt konto? Denna åtgärd kan inte ångras.",
     "save": "Spara ändringar"
   },
   "admin": {

@@ -41,7 +41,10 @@
     "signIn": "Inicia sesión",
     "nameRequired": "El nombre es obligatorio",
     "invalidEmail": "Por favor ingresa un correo electrónico válido",
-    "passwordTooShort": "La contraseña debe tener al menos 8 caracteres"
+    "passwordTooShort": "La contraseña debe tener al menos 8 caracteres",
+    "passwordNeedsUppercase": "La contraseña debe contener al menos una letra mayúscula",
+"passwordNeedsNumber": "La contraseña debe contener al menos un número",
+"passwordNeedsSymbol": "La contraseña debe contener al menos un símbolo"
   },
   "history": {
     "title": "Historial de descargas",
@@ -59,7 +62,8 @@
     "updateName": "Actualizar nombre",
     "updatePassword": "Actualizar contraseña",
     "deleteAccount": "Eliminar cuenta",
-    "deleteConfirm": "Ingresa tu contraseña para confirmar la eliminación de la cuenta",
+    "deleteAccountConfirm": "Ingresa tu contraseña para confirmar la eliminación de la cuenta",
+    "deleteConfirm": "¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.",
     "save": "Guardar cambios"
   },
   "admin": {

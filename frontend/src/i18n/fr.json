@@ -41,7 +41,10 @@
     "signIn": "Se connecter",
     "nameRequired": "Le nom est requis",
     "invalidEmail": "Veuillez entrer une adresse e-mail valide",
-    "passwordTooShort": "Le mot de passe doit contenir au moins 8 caractères"
+    "passwordTooShort": "Le mot de passe doit contenir au moins 8 caractères",
+    "passwordNeedsUppercase": "Le mot de passe doit contenir au moins une lettre majuscule",
+"passwordNeedsNumber": "Le mot de passe doit contenir au moins un chiffre",
+"passwordNeedsSymbol": "Le mot de passe doit contenir au moins un symbole"
   },
   "history": {
     "title": "Historique des téléchargements",
@@ -59,7 +62,8 @@
     "updateName": "Mettre à jour le nom",
     "updatePassword": "Mettre à jour le mot de passe",
     "deleteAccount": "Supprimer le compte",
-    "deleteConfirm": "Entrez votre mot de passe pour confirmer la suppression du compte",
+    "deleteAccountConfirm": "Entrez votre mot de passe pour confirmer la suppression du compte",
+    "deleteConfirm": "Êtes-vous sûr de vouloir supprimer votre compte? Cette action est irréversible.",
     "save": "Enregistrer les modifications"
   },
   "admin": {

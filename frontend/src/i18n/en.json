@@ -41,7 +41,10 @@
     "signIn": "Sign in",
     "nameRequired": "Name is required",
     "invalidEmail": "Please enter a valid email address",
-    "passwordTooShort": "Password must be at least 8 characters"
+    "passwordTooShort": "Password must be at least 8 characters",
+    "passwordNeedsUppercase": "Password must contain at least one uppercase letter",
+"passwordNeedsNumber": "Password must contain at least one number",
+"passwordNeedsSymbol": "Password must contain at least one symbol"
   },
   "history": {
     "title": "Download History",
@@ -59,7 +62,8 @@
     "updateName": "Update Name",
     "updatePassword": "Update Password",
     "deleteAccount": "Delete Account",
-    "deleteConfirm": "Enter your password to confirm account deletion",
+    "deleteAccountConfirm": "Enter your password to confirm account deletion",
+    "deleteConfirm": "Are you sure you want to delete your account? This action cannot be undone.",
     "save": "Save Changes"
   },
   "admin": {
