@@ -10,6 +10,13 @@ import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { logout } from "../../store/authSlice";
 import { Button } from "../ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 // available languages the user can switch between
 const LANGUAGES = [
@@ -40,12 +47,23 @@ export function Navbar() {
     }
   }
 
+  // generates initials from a user's name for the avatar
+  function getInitials(name?: string): string {
+    if (!name) return "U";
+    const parts = name.trim().split(/\s+/);
+    if (parts.length >= 2) {
+      return `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase();
+    }
+    return parts[0].slice(0, 2).toUpperCase();
+  }
+
   return (
     <nav className="bg-white/10 backdrop-blur-md border-b border-white/20 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* logo */}
-        <Link to="/" className="text-white font-bold text-xl">
-          🎬 VideoDL
+        <Link to="/" className="text-white font-bold text-xl shrink-0">
+          <span className="hidden sm:inline">🎬 VideoDL</span>
+          <span className="sm:hidden">🎬</span>
         </Link>
 
         {/* navigation links */}
@@ -79,11 +97,9 @@ export function Navbar() {
         {/* language switcher dropdown */}
         <Select value={i18n.language} onValueChange={handleLanguageChange}>
           <SelectTrigger className="w-[65px] border-white/30 text-white bg-white/10 hover:bg-white/20 h-8 text-xs">
-            <SelectValue/>
+            <SelectValue />
           </SelectTrigger>
-          <SelectContent
-            className="bg-purple-900 border-white/20 min-w-[65px]"
-          >
+          <SelectContent className="bg-purple-900 border-white/20 min-w-[65px]">
             {LANGUAGES.map((lang) => (
               <SelectItem
                 key={lang.code}
@@ -98,16 +114,34 @@ export function Navbar() {
 
         {/* auth buttons */}
         {isAuthenticated ? (
-          <div className="flex items-center gap-2">
-            <span className="text-white/70 text-sm">{user?.name}</span>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleLogout}
-              className="border-white/30 hover:bg-white/10"
-            >
-              {t("nav.logout")}
-            </Button>
+          <div className="flex items-center gap-3">
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <button className="size-8 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center text-white text-xs font-bold tracking-wider outline outline-1 outline-white/20 shadow-md">
+                  {getInitials(user?.name)}
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                {/* shows who is logged in */}
+                <div className="px-2 py-1.5 text-sm font-medium text-gray-900">
+                  {user?.name}
+                </div>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={() => navigate("/profile")}
+                  className="cursor-pointer"
+                >
+                  {t("nav.settings", "Settings")}
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={handleLogout}
+                  className="text-red-600 cursor-pointer"
+                >
+                  {t("nav.logout")}
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         ) : (
           <div className="flex items-center gap-2">
@@ -115,15 +149,15 @@ export function Navbar() {
               <Button
                 variant="outline"
                 size="sm"
-                className="border-white/30  hover:bg-white/10"
+                className="border-white/30 text-black hover:bg-white/10"
               >
                 {t("nav.login")}
               </Button>
             </Link>
-            <Link to="/register">
+            <Link to="/register" className="hidden sm:block">
               <Button
                 size="sm"
-                className="bg-white text-purple-600 hover:dbg-white/10"
+                className="bg-white text-purple-600 hover:bg-white/90"
               >
                 {t("nav.register")}
               </Button>
