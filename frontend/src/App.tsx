@@ -2,14 +2,12 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAppSelector } from "./store/hooks";
 import { Layout } from "./components/layout/Layout";
 
-
 import { HomePage } from "./pages/HomePage";
 import { LoginPage } from "./pages/LoginPage";
 import { RegisterPage } from "./pages/RegisterPage";
 import { HistoryPage } from "./pages/HistoryPage";
 import { AdminPage } from "./pages/AdminPage";
-
-
+import { ProfilePage } from "./pages/ProfilePage";
 
 
 // redirects to login if user is not authenticated
@@ -48,6 +46,14 @@ export default function App() {
               <AdminRoute>
                 <AdminPage />
               </AdminRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <ProfilePage />
+              </ProtectedRoute>
             }
           />
           <Route path="*" element={<Navigate to="/" replace />} />
