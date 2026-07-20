@@ -28,7 +28,7 @@ export function SubtitleSettings({ subtitles, subLang, onChange }: Props) {
   if (subtitles.length === 0) return null;
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1 [&_svg]:text-white">
       <label className="text-white/80 text-sm">
         {t("home.selectSubtitle")}
       </label>
@@ -36,14 +36,14 @@ export function SubtitleSettings({ subtitles, subLang, onChange }: Props) {
         value={selectedSubtitle}
         onValueChange={(v) => onChange(v || null)}
       >
-        <SelectTrigger className="bg-white border-white/20 text-white">
-          <SelectValue placeholder={t("home.selectSubtitle")} />
+        <SelectTrigger className="bg-white/10 border-white/20 text-white backdrop-blur-sm">
+          <SelectValue className="text-white" placeholder={t("home.selectSubtitle")} />
         </SelectTrigger>
         <SelectContent className="max-h-60 overflow-y-auto">
           {/* real subtitles first */}
           {realSubs.length > 0 && (
             <>
-              <div className="px-2 py-1 text-xs text-gray-400 font-medium">
+              <div className="px-2 py-1 text-xs text-white font-medium">
                 Subtitles
               </div>
               {realSubs.map((s) => (
@@ -57,7 +57,7 @@ export function SubtitleSettings({ subtitles, subLang, onChange }: Props) {
           {/* auto-generated subtitles */}
           {autoSubs.length > 0 && (
             <>
-              <div className="px-2 py-1 text-xs text-gray-400 font-medium mt-1">
+              <div className="px-2 py-1 text-xs text-white font-medium mt-1">
                 Auto-generated
               </div>
               {autoSubs.map((s) => (
