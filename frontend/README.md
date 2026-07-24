@@ -1,75 +1,131 @@
-# React + TypeScript + Vite
+# 🎬 Video Downloader App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web application that allows users to download videos, audio, and subtitles from YouTube and other platforms. Built with React + TypeScript on the frontend and Express + MongoDB on the backend.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 🎥 Download videos in multiple qualities
+- 🎵 Download audio in MP3, M4A, or WAV format
+- 💬 Download subtitles in SRT format
+- 📋 Playlist support with smart limits
+- 👤 User authentication (register, login, JWT)
+- 📜 Personal download history
+- 🌍 Multi-language support (English, Arabic, Swedish, Italian, Spanish, French)
+- 🔄 RTL support for Arabic
+- 👑 Admin panel for user management
+- 📱 Mobile responsive design
+- 🆓 3 free downloads for guests
 
-## React Compiler
+## 🛠 Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Frontend
+- React 18 + TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui
+- Redux Toolkit
+- React Router
+- Axios
+- i18next
 
-## Expanding the ESLint configuration
+### Backend
+- Node.js + Express
+- MongoDB + Mongoose
+- JWT Authentication
+- bcryptjs
+- yt-dlp + ffmpeg
+- cors
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📋 Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 24+ (LTS)
+- MongoDB Atlas account (or local MongoDB)
+- yt-dlp installed or downloaded to `backend/bin/`
+- ffmpeg (installed via ffmpeg-static)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone the repository
 
+### 2. Set up the backend
+
+```bash
+cd backend
+npm install
+cp .env.example .env
+# Fill in your .env values
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 3. Set up the frontend
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+cd frontend
+npm install
+cp .env.example .env
+# Fill in your .env values
+npm run dev
 ```
+
+## ⚙️ Environment Variables
+
+### Backend (`backend/.env`)
+
+| Variable | Description |
+|---|---|
+| `PORT` | Server port (default: 3000) |
+| `MONGO_URI` | MongoDB connection string |
+| `JWT_SECRET` | Secret key for JWT signing (min 32 chars) |
+| `JWT_EXPIRES_IN` | Token expiry (default: 7d) |
+| `CLIENT_ORIGIN` | Frontend URL for CORS |
+| `YTDLP_PATH` | Path to yt-dlp binary |
+| `FFMPEG_PATH` | Path to ffmpeg binary |
+| `TEMP_DOWNLOAD_DIR` | Temp directory for downloads |
+
+
+### Production build
+
+```bash
+# Frontend
+cd frontend
+npm run build
+
+# Backend
+cd backend
+npm start
+```
+
+## 📡 API Endpoints
+
+### Auth
+| Method | Endpoint | Description | Auth |
+|---|---|---|---|
+| POST | `/api/auth/register` | Register new account | No |
+| POST | `/api/auth/login` | Login | No |
+| GET | `/api/auth/me` | Get current user | Yes |
+| PATCH | `/api/auth/me` | Update profile | Yes |
+| DELETE | `/api/auth/me` | Delete account | Yes |
+
+### Download
+| Method | Endpoint | Description | Auth |
+|---|---|---|---|
+| POST | `/api/probe` | Get video metadata | Optional |
+| POST | `/api/download` | Download video/audio/subtitle | Optional |
+
+### History
+| Method | Endpoint | Description | Auth |
+|---|---|---|---|
+| GET | `/api/history` | Get download history | Yes |
+| DELETE | `/api/history` | Clear all history | Yes |
+| DELETE | `/api/history/:id` | Delete one entry | Yes |
+
+### Admin
+| Method | Endpoint | Description | Auth |
+|---|---|---|---|
+| GET | `/api/admin/users` | List all users | Admin |
+| PATCH | `/api/admin/users/:id` | Update user role | Admin |
+| DELETE | `/api/admin/users/:id` | Delete user | Admin |
+
+## 📄 License
+
+MIT
