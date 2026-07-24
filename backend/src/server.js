@@ -12,26 +12,40 @@ import historyRoutes from "./routes/historyRoutes.js";
 import probeRoutes from "./routes/probeRoutes.js";
 import downloadRoutes from "./routes/downloadRoutes.js";
 
+import fs from "fs";
+import path from "path";
+
+// clean up any leftover temp files from previous sessions
+const tempDir = process.env.TEMP_DOWNLOAD_DIR || "./tmp_downloads";
+if (fs.existsSync(tempDir)) {
+  const files = fs.readdirSync(tempDir);
+  files.forEach((file) => {
+    fs.unlinkSync(path.join(tempDir, file));
+  });
+  if (files.length > 0) {
+    console.log(`Cleaned up ${files.length} leftover temp file(s)`);
+  }
+}
 
 const PORT = process.env.PORT || 3000;
 const app = express();
 
 // allow requests from the frontend
-app.use(cors({
-  origin: process.env.CLIENT_ORIGIN || "http://localhost:5173",
-  credentials: true,
-  exposedHeaders: ["Content-Disposition", "Content-Length"],
-}));
+app.use(
+  cors({
+    origin: process.env.CLIENT_ORIGIN || "http://localhost:5173",
+    credentials: true,
+    exposedHeaders: ["Content-Disposition", "Content-Length"],
+  }),
+);
 
 app.use(express.json());
 app.use(cookieParser());
-
 
 // health check endpoint
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok" });
 });
-
 
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
