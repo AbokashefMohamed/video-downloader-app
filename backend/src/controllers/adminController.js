@@ -3,7 +3,16 @@ import mongoose from "mongoose";
 // returns every user in the system (admin only)
 export async function listUsers(req, res) {
   const users = await User.find().select("email name role createdAt");
-  res.json(users);
+
+  const mapped = users.map((u) => ({
+    id: u._id.toString(),
+    email: u.email,
+    name: u.name,
+    role: u.role,
+    createdAt: u.createdAt,
+  }));
+
+  res.json(mapped);
 }
 
 // lets an admin update another users name or role
@@ -15,6 +24,10 @@ export async function adminUpdateUser(req, res) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({ message: "Invalid user id" });
+  }
+  // prevent admin from changing their own role through admin panel
+  if (id === req.userId) {
+    return res.status(403).json({ message: "You cannot change your own role" });
   }
 
   const user = await User.findById(id);
@@ -50,6 +63,11 @@ export async function adminDeleteUser(req, res) {
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({ message: "Invalid user id" });
+  }
+  if (id === req.userId) {
+    return res
+      .status(403)
+      .json({ message: "You cannot delete your own account here" });
   }
 
   const user = await User.findById(id);
