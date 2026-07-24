@@ -10,9 +10,12 @@ export async function getAllUsers(): Promise<User[]> {
 
 
 // update another user's name or role — admin only
-export async function adminUpdateUser(userId: string, data: { name?: string; role?: 'user' | 'admin' }): Promise<User> {
-  const response = await api.patch<User>(`/admin/users/${userId}`, data);
-  return response.data;
+export async function adminUpdateUser(
+  userId: string,
+  data: { name?: string; role?: "user" | "admin" }
+): Promise<User> {
+  const response = await api.patch<{ message: string; user: User }>(`/admin/users/${userId}`, data);
+  return response.data.user;
 }
 
 // delete another user's account — admin only
