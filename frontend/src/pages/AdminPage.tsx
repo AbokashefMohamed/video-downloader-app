@@ -29,7 +29,16 @@ export function AdminPage() {
   // toggle user role between user and admin
   async function handleRoleChange(userId: string, currentRole: string) {
   const newRole = currentRole === "admin" ? "user" : "admin";
-  setError(null); 
+  setError(null);
+
+  if (currentRole === "admin") {
+    const adminCount = users.filter((u) => u.role === "admin").length;
+    if (adminCount <= 1) {
+      setError(t("admin.errors.lastAdmin", "Cannot demote the last active admin."));
+      return;
+    }
+  }
+
   try {
     const updated = await adminUpdateUser(userId, { role: newRole });
     setUsers((prev) =>
@@ -43,6 +52,12 @@ export function AdminPage() {
   // delete a user and remove from list
   async function handleDelete(userId: string) {
     setError(null);
+
+    if (currentUser?.id === userId) {
+    setError(t("admin.errors.cannotDeleteSelf", "You cannot delete your own account."));
+    return;
+  }
+  
     try {
       await adminDeleteUser(userId);
       setUsers((prev) => prev.filter((u) => u.id !== userId));
