@@ -16,7 +16,7 @@ import { SubtitleSettings } from "../components/home/SubtitleSettings";
 import { DownloadButton } from "../components/home/DownloadButton";
 import { isValidUrl } from "../utils/validation";
 import { AudioFormat } from "../components/home/AudioSettings";
-
+import { LandingContent } from "../components/home/LandingContent";
 
 export function HomePage() {
   const { t } = useTranslation();
@@ -124,7 +124,7 @@ export function HomePage() {
   const downloadDisabled = type === "subtitle" && isAuthenticated && !subLang;
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <div id="downloader" className="max-w-2xl mx-auto">
       {/* hero section */}
       <div className="text-center mb-8">
         <h1 className="text-4xl font-bold text-white mb-2">
@@ -203,6 +203,7 @@ export function HomePage() {
           </div>
         )}
       </div>
+      <LandingContent />
     </div>
   );
 }
