@@ -66,7 +66,7 @@ app.get("/api/test-probe", async (req, res) => {
   const nodePath = process.execPath;
   const url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
   
-  const cmd = `${ytdlpPath} --dump-json --no-playlist --no-warnings --js-runtime "nodejs:${nodePath}" --extractor-args "youtube:player_client=web" "${url}" 2>&1`;
+  const cmd = `${ytdlpPath} --dump-json --no-playlist --no-warnings --js-runtime "nodejs:${nodePath}" "${url}" 2>&1`;
   
   exec(cmd, { timeout: 60000 }, (error, stdout, stderr) => {
     res.json({

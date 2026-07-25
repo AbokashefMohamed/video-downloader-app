@@ -5,8 +5,9 @@ export function spawnYtDlp(url, noPlaylist) {
   const args = [
     "--dump-json",
     "--no-warnings",
-    "--extractor-args", "youtube:player_client=web",
-    "--js-runtime", `nodejs:${process.execPath}`,
+    "--js-runtime",
+    `nodejs:${process.execPath}`,
+    "--no-check-certificates",
     ...(noPlaylist ? ["--no-playlist"] : []),
     url,
   ];

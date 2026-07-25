@@ -32,27 +32,31 @@ function downloadFile(url, destination, redirectCount = 0) {
   }
   return new Promise((resolve, reject) => {
     const file = fs.createWriteStream(destination);
-    https.get(url, (res) => {
-      const { statusCode, headers } = res;
-      if (statusCode === 302 || statusCode === 301) {
+    https
+      .get(url, (res) => {
+        const { statusCode, headers } = res;
+        if (statusCode === 302 || statusCode === 301) {
+          file.close();
+          safeRemove(destination);
+          return downloadFile(headers.location, destination, redirectCount + 1)
+            .then(resolve)
+            .catch(reject);
+        }
+        if (statusCode !== 200) {
+          file.close();
+          safeRemove(destination);
+          return reject(
+            new Error(`Download failed with status: ${statusCode}`),
+          );
+        }
+        res.pipe(file);
+        file.on("close", resolve);
+      })
+      .on("error", (err) => {
         file.close();
         safeRemove(destination);
-        return downloadFile(headers.location, destination, redirectCount + 1)
-          .then(resolve)
-          .catch(reject);
-      }
-      if (statusCode !== 200) {
-        file.close();
-        safeRemove(destination);
-        return reject(new Error(`Download failed with status: ${statusCode}`));
-      }
-      res.pipe(file);
-      file.on("close", resolve);
-    }).on("error", (err) => {
-      file.close();
-      safeRemove(destination);
-      reject(err);
-    });
+        reject(err);
+      });
   });
 }
 
@@ -78,6 +82,23 @@ async function setup() {
   } catch (error) {
     console.error(`✗ Failed to download ${BINARY_NAME}:`, error.message);
     process.exit(1);
+  }
+  // install curl-cffi for impersonation support on Linux
+  if (!IS_WINDOWS) {
+    try {
+      console.log("Installing curl-cffi for impersonation support...");
+      const { execSync } = await import("child_process");
+      execSync(
+        "pip3 install curl-cffi 2>/dev/null || pip install curl-cffi 2>/dev/null || true",
+        {
+          stdio: "inherit",
+          timeout: 60000,
+        },
+      );
+      console.log("✓ curl-cffi installed");
+    } catch (_) {
+      console.log("curl-cffi installation skipped");
+    }
   }
 }
 
