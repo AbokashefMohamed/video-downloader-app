@@ -48,6 +48,7 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok" });
 });
 
+// tests endpoint
 app.get("/api/test-ytdlp", (req, res) => {
   exec(`${process.env.YTDLP_PATH || "./bin/yt-dlp"} --version`, (error, stdout, stderr) => {
     res.json({
@@ -59,6 +60,24 @@ app.get("/api/test-ytdlp", (req, res) => {
     });
   });
 });
+app.get("/api/test-probe", async (req, res) => {
+  const { exec } = await import("child_process");
+  const ytdlpPath = process.env.YTDLP_PATH || "./bin/yt-dlp";
+  const url = "https://vimeo.com/76979871";
+  
+  exec(`${ytdlpPath} --dump-json --no-playlist "${url}" 2>&1`, 
+    { timeout: 30000 },
+    (error, stdout, stderr) => {
+      res.json({
+        exitCode: error?.code,
+        stdout: stdout?.slice(0, 500),
+        stderr: stderr?.slice(0, 500),
+        error: error?.message,
+      });
+    }
+  );
+});
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
