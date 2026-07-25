@@ -5,6 +5,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { connectDB } from "./config/db.js";
+import { exec } from "child_process";
 
 import authRoutes from "./routes/authRoutes.js";
 import adminRoutes from "./routes/adminRoutes.js";
@@ -45,6 +46,18 @@ app.use(cookieParser());
 // health check endpoint
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok" });
+});
+
+app.get("/api/test-ytdlp", (req, res) => {
+  exec(`${process.env.YTDLP_PATH || "./bin/yt-dlp"} --version`, (error, stdout, stderr) => {
+    res.json({
+      version: stdout.trim(),
+      error: error?.message,
+      stderr: stderr.trim(),
+      ytdlpPath: process.env.YTDLP_PATH || "./bin/yt-dlp",
+      execPath: process.execPath,
+    });
+  });
 });
 
 app.use("/api/auth", authRoutes);
