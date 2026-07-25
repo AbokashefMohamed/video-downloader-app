@@ -149,7 +149,7 @@ export function Navbar() {
               <Button
                 variant="outline"
                 size="sm"
-                className="border-white/30 text-black hover:bg-white/10"
+                className="border-white/30 text-black hover:bg-white/10 hover:text-white"
               >
                 {t("nav.login")}
               </Button>
@@ -157,7 +157,7 @@ export function Navbar() {
             <Link to="/register" className="hidden sm:block">
               <Button
                 size="sm"
-                className="bg-white text-purple-600 hover:bg-white/90"
+                className="border-white/30 bg-white/90 hover:bg-inherit text-purple-600 hover:text-white"
               >
                 {t("nav.register")}
               </Button>
