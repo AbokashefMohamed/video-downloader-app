@@ -63,19 +63,21 @@ app.get("/api/test-ytdlp", (req, res) => {
 app.get("/api/test-probe", async (req, res) => {
   const { exec } = await import("child_process");
   const ytdlpPath = process.env.YTDLP_PATH || "./bin/yt-dlp";
-  const url = "https://www.youtube.com/watch?v=BaW_jenozKc";
+  const nodePath = process.execPath;
+  const url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
   
-  exec(`${ytdlpPath} --dump-json --no-playlist "${url}" 2>&1`, 
-    { timeout: 30000 },
-    (error, stdout, stderr) => {
-      res.json({
-        exitCode: error?.code,
-        stdout: stdout?.slice(0, 500),
-        stderr: stderr?.slice(0, 500),
-        error: error?.message,
-      });
-    }
-  );
+  const cmd = `${ytdlpPath} --dump-json --no-playlist --no-warnings --js-runtime "nodejs:${nodePath}" --extractor-args "youtube:player_client=web" "${url}" 2>&1`;
+  
+  exec(cmd, { timeout: 60000 }, (error, stdout, stderr) => {
+    res.json({
+      exitCode: error?.code,
+      nodePath,
+      ytdlpPath,
+      stdout: stdout?.slice(0, 1000),
+      stderr: stderr?.slice(0, 500),
+      error: error?.message?.slice(0, 200),
+    });
+  });
 });
 
 
