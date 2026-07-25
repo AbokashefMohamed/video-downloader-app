@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Navbar } from "./Navbar";
-
+import { Footer } from "./Footer";
 // wraps every page with the navbar and a consistent background
 export function Layout() {
   return (
@@ -9,6 +9,7 @@ export function Layout() {
       <main className="max-w-7xl mx-auto px-4 py-8">
         <Outlet />
       </main>
+      <Footer />
     </div>
   );
 }
