@@ -63,7 +63,7 @@ app.get("/api/test-ytdlp", (req, res) => {
 app.get("/api/test-probe", async (req, res) => {
   const { exec } = await import("child_process");
   const ytdlpPath = process.env.YTDLP_PATH || "./bin/yt-dlp";
-  const url = "https://vimeo.com/76979871";
+  const url = "https://www.youtube.com/watch?v=BaW_jenozKc";
   
   exec(`${ytdlpPath} --dump-json --no-playlist "${url}" 2>&1`, 
     { timeout: 30000 },
