@@ -8,8 +8,8 @@ import { RegisterPage } from "./pages/RegisterPage";
 import { HistoryPage } from "./pages/HistoryPage";
 import { AdminPage } from "./pages/AdminPage";
 import { ProfilePage } from "./pages/ProfilePage";
-
-
+import { CopyrightPage } from "./pages/CopyrightPage";
+import { TermsPage } from "./pages/TermsPage";
 // redirects to login if user is not authenticated
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useAppSelector((state) => state.auth);
@@ -19,7 +19,9 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
 // redirects to home if user is not an admin
 function AdminRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, user, isLoading } = useAppSelector((state) => state.auth);
+  const { isAuthenticated, user, isLoading } = useAppSelector(
+    (state) => state.auth,
+  );
   if (isLoading) return null;
   if (!isAuthenticated) return <Navigate to="/login" replace />;
   if (user?.role !== "admin") return <Navigate to="/" replace />;
@@ -59,6 +61,8 @@ export default function App() {
             }
           />
           <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/copyright" element={<CopyrightPage />} />
+          <Route path="/terms" element={<TermsPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
