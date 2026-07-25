@@ -48,49 +48,6 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok" });
 });
 
-// tests endpoint
-app.get("/api/test-ytdlp", (req, res) => {
-  exec(`${process.env.YTDLP_PATH || "./bin/yt-dlp"} --version`, (error, stdout, stderr) => {
-    res.json({
-      version: stdout.trim(),
-      error: error?.message,
-      stderr: stderr.trim(),
-      ytdlpPath: process.env.YTDLP_PATH || "./bin/yt-dlp",
-      execPath: process.execPath,
-    });
-  });
-});
-app.get("/api/test-probe", async (req, res) => {
-  const { exec } = await import("child_process");
-  const ytdlpPath = process.env.YTDLP_PATH || "./bin/yt-dlp";
-  const nodePath = process.execPath;
-  const url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-  
-  const cmd = `${ytdlpPath} --dump-json --no-playlist --no-warnings --js-runtime "nodejs:${nodePath}" "${url}" 2>&1`;
-  
-  exec(cmd, { timeout: 60000 }, (error, stdout, stderr) => {
-    res.json({
-      exitCode: error?.code,
-      nodePath,
-      ytdlpPath,
-      stdout: stdout?.slice(0, 1000),
-      stderr: stderr?.slice(0, 500),
-      error: error?.message?.slice(0, 200),
-    });
-  });
-});
-app.get("/api/test-probe2", async (req, res) => {
-  const { spawnYtDlp } = await import("./probe/spawnYtDlp.js");
-  const child = spawnYtDlp("https://www.youtube.com/watch?v=dQw4w9WgXcQ", true);
-  let stdout = "";
-  let stderr = "";
-  child.stdout.on("data", (d) => stdout += d.toString());
-  child.stderr.on("data", (d) => stderr += d.toString());
-  child.on("close", (code) => {
-    res.json({ code, stdout: stdout.slice(0, 500), stderr: stderr.slice(0, 500) });
-  });
-});
-
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/history", historyRoutes);

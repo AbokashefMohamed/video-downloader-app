@@ -21,17 +21,11 @@ function getCookiesArgs() {
 }
 
 export function spawnYtDlp(url, noPlaylist) {
-  const hasCookies = !!process.env.YTDLP_COOKIES_BASE64;
-  console.log("[spawnYtDlp] has cookies:", hasCookies);
-  console.log("[spawnYtDlp] cookies length:", process.env.YTDLP_COOKIES_BASE64?.length);
   const args = [
     "--dump-json",
     "--no-warnings",
-    "--js-runtime",
-    `nodejs:${process.execPath}`,
-    "--no-check-certificates",
-    "--extractor-args",
-    "youtube:player_client=default,web",
+    "--js-runtime", `nodejs:${process.execPath}`,
+    "--extractor-args", "youtube:player_client=android",
     ...getCookiesArgs(),
     ...(noPlaylist ? ["--no-playlist"] : []),
     url,
