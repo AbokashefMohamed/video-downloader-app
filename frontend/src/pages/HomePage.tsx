@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../store/hooks";
 import { probeUrl } from "../api/probe";
@@ -36,6 +36,10 @@ export function HomePage() {
   const [downloading, setDownloading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [downloadProgress, setDownloadProgress] = useState<number>(0);
+  const progressIntervalRef = useRef<ReturnType<typeof setInterval> | null>(
+    null,
+  );
 
   // reset settings when type changes
   function handleTypeChange(newType: DownloadType) {
@@ -98,16 +102,40 @@ export function HomePage() {
     setError(null);
     setSuccess(false);
     setDownloading(true);
+    setDownloadProgress(0);
+
+    // simulate progress while server processes
+    let fakeProgress = 0;
+    progressIntervalRef.current = setInterval(() => {
+      fakeProgress += Math.random() * 3;
+      if (fakeProgress >= 90) {
+        fakeProgress = 95; // stop at 90% until real download starts
+        if (progressIntervalRef.current) {
+          clearInterval(progressIntervalRef.current);
+        }
+      }
+      setDownloadProgress(Math.floor(fakeProgress));
+    }, 500);
 
     try {
-      await downloadFile({
-        url: url.trim(),
-        type,
-        isPlaylist,
-        formatId: formatId ?? undefined,
-        audioFormat: type === "audio" ? audioFormat : undefined,
-        subLang: type === "subtitle" && subLang ? subLang : undefined,
-      });
+      await downloadFile(
+        {
+          url: trimmedUrl,
+          type,
+          isPlaylist,
+          formatId: formatId ?? undefined,
+          audioFormat: type === "audio" ? audioFormat : undefined,
+          subLang: type === "subtitle" && subLang ? subLang : undefined,
+        },
+        (percent) => {
+          // when real progress starts, clear fake interval
+          if (progressIntervalRef.current) {
+            clearInterval(progressIntervalRef.current);
+          }
+          setDownloadProgress(percent);
+        },
+      );
+      setDownloadProgress(100);
       setSuccess(true);
     } catch (err: unknown) {
       if (err instanceof Error) {
@@ -116,7 +144,11 @@ export function HomePage() {
         setError(t("common.error"));
       }
     } finally {
+      if (progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
+      }
       setDownloading(false);
+      setDownloadProgress(0);
     }
   }
 
@@ -197,6 +229,7 @@ export function HomePage() {
               downloading={downloading}
               disabled={downloadDisabled}
               isAuthenticated={isAuthenticated}
+              downloadProgress={downloadProgress}
               onPlaylistChange={setIsPlaylist}
               onDownload={handleDownload}
             />
