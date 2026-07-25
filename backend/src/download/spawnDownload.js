@@ -147,10 +147,14 @@ export async function spawnDownload({
 
         // strip the uniqueId suffix so the user gets a clean filename
         const cleanName = fileName.replace(`_${uniqueId}`, "");
+        // sanitize filename remove characters not allowed in HTTP headers
+        const encodedFileName = encodeURIComponent(cleanName);
+
         res.setHeader(
           "Content-Disposition",
-          `attachment; filename="${cleanName}"`,
+          `attachment; filename="download"; filename*=UTF-8''${encodedFileName}`,
         );
+        
         res.setHeader("Content-Length", fileSize);
         res.setHeader("Content-Type", "application/octet-stream");
 
