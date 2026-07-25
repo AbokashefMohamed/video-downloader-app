@@ -21,6 +21,9 @@ function getCookiesArgs() {
 }
 
 export function spawnYtDlp(url, noPlaylist) {
+  const hasCookies = !!process.env.YTDLP_COOKIES_BASE64;
+  console.log("[spawnYtDlp] has cookies:", hasCookies);
+  console.log("[spawnYtDlp] cookies length:", process.env.YTDLP_COOKIES_BASE64?.length);
   const args = [
     "--dump-json",
     "--no-warnings",
