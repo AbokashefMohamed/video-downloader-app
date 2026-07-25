@@ -10,13 +10,14 @@ import { getOrCreateCookieId } from "../utils/cookie.js";
 export async function download(req, res) {
   const { url, type, isPlaylist, formatId, audioFormat, subLang } = req.body;
 
-  // basic validation
   if (!url || !type) {
     return res.status(400).json({ message: "url and type are required" });
   }
 
   if (!["video", "audio", "subtitle"].includes(type)) {
-    return res.status(400).json({ message: "type must be video, audio or subtitle" });
+    return res
+      .status(400)
+      .json({ message: "type must be video, audio or subtitle" });
   }
 
   // guests can't pick quality or format — force defaults
@@ -25,7 +26,9 @@ export async function download(req, res) {
   const safeSubLang = req.userId ? subLang : null;
 
   if (type === "subtitle" && !safeSubLang) {
-    return res.status(400).json({ message: "subLang is required for subtitle downloads" });
+    return res
+      .status(400)
+      .json({ message: "subLang is required for subtitle downloads" });
   }
 
   // mark logged-in user as having an active download
@@ -33,7 +36,7 @@ export async function download(req, res) {
     await User.findByIdAndUpdate(req.userId, { activeDownload: true });
   }
 
-  // get guest cookie BEFORE streaming starts — can't set cookies after response begins
+  // get guest cookie before streaming starts can't set cookies after response begins
   const guestIp = !req.userId ? req.ip : null;
   const guestCookieId = !req.userId ? getOrCreateCookieId(req, res) : null;
 
@@ -71,7 +74,6 @@ export async function download(req, res) {
       playlistEnd,
       res,
     });
-
   } catch (error) {
     console.error("[download] error:", error.message);
     // only send error response if streaming hasn't started yet
