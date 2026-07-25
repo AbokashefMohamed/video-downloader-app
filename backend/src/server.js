@@ -79,7 +79,17 @@ app.get("/api/test-probe", async (req, res) => {
     });
   });
 });
-
+app.get("/api/test-probe2", async (req, res) => {
+  const { spawnYtDlp } = await import("./probe/spawnYtDlp.js");
+  const child = spawnYtDlp("https://www.youtube.com/watch?v=dQw4w9WgXcQ", true);
+  let stdout = "";
+  let stderr = "";
+  child.stdout.on("data", (d) => stdout += d.toString());
+  child.stderr.on("data", (d) => stderr += d.toString());
+  child.on("close", (code) => {
+    res.json({ code, stdout: stdout.slice(0, 500), stderr: stderr.slice(0, 500) });
+  });
+});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
