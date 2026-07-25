@@ -57,7 +57,7 @@ export async function adminUpdateUser(req, res) {
   });
 }
 
-// lets an admin delete another users account
+// let an admin delete another users account
 export async function adminDeleteUser(req, res) {
   const { id } = req.params;
 
