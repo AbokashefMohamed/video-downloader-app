@@ -48,6 +48,14 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok" });
 });
 
+
+app.get("/api/test-deps", async (req, res) => {
+  const { exec } = await import("child_process");
+  exec("pip3 show curl-cffi 2>&1", (error, stdout) => {
+    res.json({ curl_cffi: stdout.trim(), error: error?.message });
+  });
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/history", historyRoutes);
