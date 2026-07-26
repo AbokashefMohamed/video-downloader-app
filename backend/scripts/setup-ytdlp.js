@@ -86,18 +86,18 @@ async function setup() {
   // install curl-cffi for impersonation support on Linux
   if (!IS_WINDOWS) {
     try {
-      console.log("Installing curl-cffi for impersonation support...");
+      console.log("Installing curl_cffi...");
       const { execSync } = await import("child_process");
       execSync(
-        "pip3 install curl-cffi 2>/dev/null || pip install curl-cffi 2>/dev/null || true",
+        "pip3 install curl_cffi --break-system-packages 2>&1 || pip install curl_cffi --break-system-packages 2>&1 || true",
         {
           stdio: "inherit",
-          timeout: 60000,
+          timeout: 120000,
         },
       );
-      console.log("✓ curl-cffi installed");
-    } catch (_) {
-      console.log("curl-cffi installation skipped");
+      console.log("✓ curl_cffi installed");
+    } catch (e) {
+      console.log("curl_cffi installation failed:", e.message);
     }
   }
 }
