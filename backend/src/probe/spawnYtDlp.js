@@ -24,7 +24,7 @@ export function spawnYtDlp(url, noPlaylist) {
   const args = [
     "--dump-json",
     "--no-warnings",
-    "--impersonate", "chrome",
+    "--impersonate-target", "chrome",
     "--js-runtime", `nodejs:${process.execPath}`,
     ...getCookiesArgs(),
     ...(noPlaylist ? ["--no-playlist"] : []),
