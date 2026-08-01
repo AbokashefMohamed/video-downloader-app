@@ -51,9 +51,12 @@ app.get("/api/health", (req, res) => {
 
 app.get("/api/test-deps", async (req, res) => {
   const { exec } = await import("child_process");
-  exec("pip3 show curl-cffi 2>&1", (error, stdout) => {
-    res.json({ curl_cffi: stdout.trim(), error: error?.message });
-  });
+  exec("yt-dlp --version 2>&1 && python3 -c \"import curl_cffi; print('curl_cffi:', curl_cffi.__version__)\" 2>&1 && yt-dlp --impersonate chrome --dump-json --no-playlist 'https://vimeo.com/924220756' 2>&1 | head -5", 
+    { timeout: 60000 },
+    (error, stdout) => {
+      res.json({ output: stdout.trim(), error: error?.message });
+    }
+  );
 });
 
 app.get("/api/test-vimeo", async (req, res) => {
