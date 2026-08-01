@@ -24,8 +24,8 @@ export function spawnYtDlp(url, noPlaylist) {
   const args = [
     "--dump-json",
     "--no-warnings",
+    "--impersonate", "chrome",
     "--js-runtime", `nodejs:${process.execPath}`,
-    "--extractor-args", "youtube:player_client=android",
     ...getCookiesArgs(),
     ...(noPlaylist ? ["--no-playlist"] : []),
     url,

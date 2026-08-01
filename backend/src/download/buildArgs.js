@@ -3,14 +3,13 @@ import os from "os";
 import fs from "fs";
 import { ALLOWED_AUDIO_FORMATS, FFMPEG_PATH } from "./config.js";
 
-
-
-
 function getCookiesArgs() {
   const cookiesBase64 = process.env.YTDLP_COOKIES_BASE64;
   if (!cookiesBase64) return [];
   try {
-    const cookiesContent = Buffer.from(cookiesBase64, "base64").toString("utf8");
+    const cookiesContent = Buffer.from(cookiesBase64, "base64").toString(
+      "utf8",
+    );
     const cookiesPath = path.join(os.tmpdir(), "yt-dlp-cookies.txt");
     fs.writeFileSync(cookiesPath, cookiesContent);
     return ["--cookies", cookiesPath];
@@ -20,15 +19,27 @@ function getCookiesArgs() {
 }
 
 // build ytdlp argumant array based on what user wants to download
-export function buildArgs({ type, url, outputPath, formatId, audioFormat, subLang, playlistEnd }) {
+export function buildArgs({
+  type,
+  url,
+  outputPath,
+  formatId,
+  audioFormat,
+  subLang,
+  playlistEnd,
+}) {
   const base = [
-    "--ffmpeg-location", FFMPEG_PATH,
+    "--ffmpeg-location",
+    FFMPEG_PATH,
     "--no-warnings",
     "--newline",
-    "--js-runtime", `nodejs:${process.execPath}`,
-    "--no-check-certificates",
+    "--impersonate",
+    "chrome",
+    "--js-runtime",
+    `nodejs:${process.execPath}`,
     ...getCookiesArgs(),
-    "-o", outputPath,
+    "-o",
+    outputPath,
   ];
 
   // add playlist limit if one was calculated
