@@ -56,6 +56,18 @@ app.get("/api/test-deps", async (req, res) => {
   });
 });
 
+app.get("/api/test-vimeo", async (req, res) => {
+  const { exec } = await import("child_process");
+  const cmd = `yt-dlp --dump-json --no-playlist --no-warnings "https://vimeo.com/924220756" 2>&1`;
+  exec(cmd, { timeout: 60000 }, (error, stdout) => {
+    res.json({
+      exitCode: error?.code,
+      stdout: stdout?.slice(0, 500),
+      error: error?.message?.slice(0, 200),
+    });
+  });
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/history", historyRoutes);
